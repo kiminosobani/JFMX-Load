@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DCBF61CC-219A-4DCB-A5C0-A08980B17652}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LoadStation</RootNamespace>
+    <AssemblyName>LoadStation</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DSkin, Version=16.6.3.38, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DSkin_\【4.0】DSkin20260909090934\DSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DSkin.Design, Version=16.6.3.38, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DSkin_\【4.0】DSkin20260909090934\DSkin.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar, Version=5.1.4.167, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlSugar.5.1.4.167\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckForm.designer.cs">
+      <DependentUpon>CheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CopyFile.cs" />
+    <Compile Include="DataBaseprogram\CDataBaseManage.cs" />
+    <Compile Include="DataBaseprogram\db_EquipDao.cs" />
+    <Compile Include="DataBaseprogram\db_ProduceInfo.cs" />
+    <Compile Include="DataBaseprogram\db_TrayInfo.cs" />
+    <Compile Include="DataBaseprogram\TaskList.cs" />
+    <Compile Include="EquipSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipSelectForm.designer.cs">
+      <DependentUpon>EquipSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HcH5uHelper.cs" />
+    <Compile Include="HttpHelper.cs" />
+    <Compile Include="ImageShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageShow.designer.cs">
+      <DependentUpon>ImageShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="ManualControlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualControlForm.designer.cs">
+      <DependentUpon>ManualControlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageBoxEx.designer.cs">
+      <DependentUpon>MessageBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageConfirm.designer.cs">
+      <DependentUpon>MessageConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumberSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumberSelectForm.designer.cs">
+      <DependentUpon>NumberSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverAll.cs" />
+    <Compile Include="pojo\Equip.cs" />
+    <Compile Include="pojo\Frockinfo.cs" />
+    <Compile Include="pojo\Harvest.cs" />
+    <Compile Include="pojo\Order1.cs" />
+    <Compile Include="pojo\Orderre.cs" />
+    <Compile Include="pojo\OrderRecord.cs" />
+    <Compile Include="pojo\Product.cs" />
+    <Compile Include="pojo\ReqData.cs" />
+    <Compile Include="pojo\RespData.cs" />
+    <Compile Include="pojo\Rgvtasklist.cs" />
+    <Compile Include="pojo\Tuo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PeerTcpCommunicator.cs" />
+    <Compile Include="SQL\SqlSugarHelper.cs" />
+    <Compile Include="SQL\TuoDao.cs" />
+    <Compile Include="TaskListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskListForm.designer.cs">
+      <DependentUpon>TaskListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskMessageForm.designer.cs">
+      <DependentUpon>TaskMessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskOperateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskOperateForm.designer.cs">
+      <DependentUpon>TaskOperateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vo\RgvTaskListVo.cs" />
+    <EmbeddedResource Include="CheckForm.resx">
+      <DependentUpon>CheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EquipSelectForm.resx">
+      <DependentUpon>EquipSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageShow.resx">
+      <DependentUpon>ImageShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualControlForm.resx">
+      <DependentUpon>ManualControlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageBoxEx.resx">
+      <DependentUpon>MessageBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageConfirm.resx">
+      <DependentUpon>MessageConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumberSelectForm.resx">
+      <DependentUpon>NumberSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TaskListForm.resx">
+      <DependentUpon>TaskListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskMessageForm.resx">
+      <DependentUpon>TaskMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskOperateForm.resx">
+      <DependentUpon>TaskOperateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\BG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\T.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\NoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Button-Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Button-Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\check-error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- 仅在 Release 模式下编译时自动递增版本号 -->
+  <Target Name="AutoIncrementVersion" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="$(WINDIR)\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)UpdateVersion.ps1&quot;" />
+  </Target>
+</Project>

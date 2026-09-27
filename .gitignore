@@ -1,0 +1,50 @@
+## Visual Studio / C# .gitignore
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rchive/
+
+# Visual Studio files
+.vs/
+*.dotCover
+
+# NuGet Packages
+packages/
+*.nupkg
+!**/packages/build/
+
+# Log files
+*.log
+[Ll]og/
+[Ll]ogs/
+
+# OS and Temp files
+[Tt]emp/
+*.tmp
+*.bak
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archives & Backups
+*.rar
+*.zip
+*.7z
+
+# Ensure project local DLL directory is preserved and tracked
+!dll/
+!dll/**
+
+push.bat
