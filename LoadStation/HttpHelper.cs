@@ -1,4 +1,4 @@
-﻿using LoadStation.pojo;
+using LoadStation.pojo;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -14,7 +14,9 @@ namespace LoadStation
 {
     internal class HttpHelper
     {
+        //todo 待修改
         private const string ADDRESS = @"http://localhost:9900";
+        //private const string ADDRESS = @"http://128.2.10.21:9900";
         private const string SAVE_TXT = "file/SaveTxt";
         private const string GET_FILES = "file/NoSHA256";
         private const string GET_FILE_PATH = "file/getFileList";
@@ -53,7 +55,7 @@ namespace LoadStation
             catch (Exception e)
             {
                 LogHelper.WriteLog(typeof(HttpHeader), e);
-                throw e;
+                return false;
             }
         }
         /// <summary>
@@ -102,7 +104,7 @@ namespace LoadStation
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HttpHeader), ex);
-                throw ex;
+                return false;
             }
         }
         /// <summary>
@@ -135,7 +137,7 @@ namespace LoadStation
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HttpHeader), ex);
-                throw ex;
+                return null;
             }
         }
         /// <summary>
@@ -175,7 +177,7 @@ namespace LoadStation
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HttpHeader), ex);
-                throw ex;
+                return false;
             }
         }
         public static byte[] GetSingleRaw(string absolutePath)
@@ -198,7 +200,7 @@ namespace LoadStation
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HttpHelper), ex);
-                throw;
+                return null;
             }
         }
         // 清空指定文件夹下的文件和目录
@@ -272,22 +274,30 @@ namespace LoadStation
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
         //获取目录下所有文件绝对路径
         public static string[] GetAllFilePath(string path)
         {
-            var client = new RestClient(ADDRESS);
-            client.Timeout = TIME_OUT;
-            var request = new RestRequest(GET_FILE_PATH, Method.POST);
-            request.AddJsonBody(path);
-            var response = client.Execute<RespData>(request);
-            if (response.StatusCode == HttpStatusCode.OK && response.ContentLength != 0)
+            try
             {
-                return JsonConvert.DeserializeObject<string[]>(response.Content).Select(p => p.Replace(@"D:", "")).ToArray();
+                var client = new RestClient(ADDRESS);
+                client.Timeout = TIME_OUT;
+                var request = new RestRequest(GET_FILE_PATH, Method.POST);
+                request.AddJsonBody(path);
+                var response = client.Execute<RespData>(request);
+                if (response.StatusCode == HttpStatusCode.OK && response.ContentLength != 0)
+                {
+                    return JsonConvert.DeserializeObject<string[]>(response.Content).Select(p => p.Replace(@"D:", "")).ToArray();
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(HttpHelper), ex);
+                return null;
+            }
         }
         // 清空指定文件夹下的文件
         private static void ClearFiles(string directoryPath)

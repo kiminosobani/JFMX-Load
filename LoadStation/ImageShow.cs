@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -77,10 +77,13 @@ namespace LoadStation
                 dSkinPictureBox1.Image = null;
             }
             byte[] zipBytes = await Task.Run(() => HttpHelper.GetSingleRaw(ImagePath[iCurrentIndex]));
-            byte[] imageBytes = ExtractSingleFileFromZip(zipBytes);
-            using (MemoryStream ms = new MemoryStream(imageBytes))
+            if (zipBytes != null && zipBytes.Length > 0)
             {
-                dSkinPictureBox1.Image = Image.FromStream(ms);
+                byte[] imageBytes = ExtractSingleFileFromZip(zipBytes);
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    dSkinPictureBox1.Image = Image.FromStream(ms);
+                }
             }
         }
 

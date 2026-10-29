@@ -1,4 +1,4 @@
-using DSkin.Controls;
+﻿using DSkin.Controls;
 using DSkin.Forms;
 using LoadStation.Sql.pojo;
 using LoadStation.vo;
@@ -17,9 +17,9 @@ namespace LoadStation
         private readonly Color TextColor = System.Drawing.Color.FromArgb(77, 220, 228);
         private readonly Color BackCol = System.Drawing.Color.FromArgb(3, 29, 54);
 
-        private int iTurnFlag = 2;
-        private int iUnLoadFlag = 1;
-        private int iAgain = 5;
+        private int iTurnFlag = 2;   // 待翻面 (visible = 2)
+        private int iUnLoadFlag = 4; // 待卸载 (visible = 4)
+        private int iAgain = 3;      // 待重装 (visible = 3)
 
         // re
         private DSkinButton pre = null;
@@ -318,7 +318,8 @@ namespace LoadStation
                     DataGridViewColumn column = dSkinDataGridView_Task.Columns[e.ColumnIndex];
                     if (column is DataGridViewButtonColumn)
                     {
-                        int iTaryNo = Convert.ToInt32(dSkinDataGridView_Task.Rows[e.RowIndex].Cells[3].Value);
+                        Tuo selectedTuo = dSkinDataGridView_Task.Rows[e.RowIndex].DataBoundItem as Tuo;
+                        int iTaryNo = selectedTuo != null ? selectedTuo.tuoId : Convert.ToInt32(dSkinDataGridView_Task.Rows[e.RowIndex].Cells[3].Value);
                         TaskOperateForm fTaskOperateForm = new TaskOperateForm(iTaryNo, ButtonToType());
                         fTaskOperateForm.ShowDialog();
                     }
